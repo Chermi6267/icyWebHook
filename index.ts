@@ -16,7 +16,7 @@ app.post("/", (req, res) => {
 
   if (req.headers["x-hub-signature-256"] === signature) {
     exec(
-      "cd ~/icyHorizonsDeploy && git stash && git pull && cd ./server && npm i && npm run build && pm2 restart server && cd ../client && npm i && npm run build && pm2 restart client",
+      "cd ~/icyHorizonsDeploy && git stash && git pull && cd ./server && npm i && npm run build && pm2 restart server && cd ../client && npm i && rm -rd .next && npm run build && pm2 restart client",
       (err, stdout, stderr) => {
         if (err) {
           console.error(`Error: ${stderr}`);
